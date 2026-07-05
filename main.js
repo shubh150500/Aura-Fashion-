@@ -576,7 +576,7 @@ if (scrollyContainer && scrollyCanvas) {
   
   // Create video element and append to DOM to force browser decoding
   const video = document.createElement("video");
-  video.src = "./assets/3d.mp4";
+  video.src = "assets/3d.mp4";
   video.preload = "auto";
   video.muted = true;
   video.playsInline = true;
@@ -637,13 +637,23 @@ if (scrollyContainer && scrollyCanvas) {
   // Draw frame on seek completion
   video.addEventListener("seeked", drawVideoToCanvas);
 
-  // Trigger draw on various loading milestones
-  video.addEventListener("loadedmetadata", () => {
+  // Trigger draw on various loading milestones (preventing race condition if cached)
+  if (video.readyState >= 1) {
     resizeCanvas();
     video.currentTime = 0.001; // Force-render first frame
-  });
-  video.addEventListener("loadeddata", resizeCanvas);
-  video.addEventListener("canplay", resizeCanvas);
+  } else {
+    video.addEventListener("loadedmetadata", () => {
+      resizeCanvas();
+      video.currentTime = 0.001;
+    });
+  }
+
+  if (video.readyState >= 2) {
+    resizeCanvas();
+  } else {
+    video.addEventListener("loadeddata", resizeCanvas);
+    video.addEventListener("canplay", resizeCanvas);
+  }
   
   window.addEventListener("resize", resizeCanvas);
 
@@ -661,6 +671,7 @@ if (scrollyContainer && scrollyCanvas) {
     if (video.duration) {
       // Seek video playback time based on scroll progress
       video.currentTime = scrollPercent * video.duration;
+      drawVideoToCanvas(); // Render immediately for real-time responsiveness
     }
 
     // Toggle active classes on text blocks based on scroll ranges
