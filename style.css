@@ -33,14 +33,14 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
   background-color: var(--bg-primary);
   color: var(--text-white);
   font-family: var(--font-body);
-  overflow-x: hidden;
+  overflow-x: clip;
   line-height: 1.6;
 }
 
@@ -2879,6 +2879,7 @@ input {
 }
 
 .scrolly-sticky {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   width: 100%;
@@ -2887,6 +2888,8 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
+  transform: translate3d(0, 0, 0); /* Force GPU compositing layer */
 }
 
 #scrollyCanvas {
