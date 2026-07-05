@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Fashion - Wear Your Aura | Premium Streetwear</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Aura Fashion offers premium quality oversized apparel, streetwear, and trendy designs. Made to match your vibe. Custom Gen-G collection available now.">
+  <meta name="keywords" content="Aura Fashion, Streetwear, Oversized, Hoodie, Flannel, Graphic Tee, Aurangabad, Gen-G, Fashion">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bebas+Neue&family=Oswald:wght@200..700&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="main-header" id="mainHeader">
+    <div class="header-container">
+      <a href="#" class="logo-link">
+        <img src="assets/logo_transparent.png" alt="Aura Fashion Logo" class="header-logo">
+      </a>
+      
+      <nav class="nav-bar">
+        <a href="#home" class="nav-link active">HOME</a>
+        <a href="#collection" class="nav-link">COLLECTION</a>
+        <a href="#new-arrivals" class="nav-link">NEW ARRIVALS</a>
+        <a href="#men" class="nav-link">MEN</a>
+        <a href="#women" class="nav-link">WOMEN</a>
+        <a href="#about" class="nav-link">ABOUT US</a>
+        <a href="#contact" class="nav-link">CONTACT</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="action-btn" id="searchTrigger" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <button class="action-btn" id="profileTrigger" aria-label="Account">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </button>
+        <button class="action-btn cart-btn" id="cartTrigger" aria-label="Shopping Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="menu-mobile-btn" id="mobileMenuTrigger" aria-label="Mobile Menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav-overlay" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose">&times;</button>
+    <nav class="mobile-nav-links">
+      <a href="#home" class="mobile-nav-link">HOME</a>
+      <a href="#collection" class="mobile-nav-link">COLLECTION</a>
+      <a href="#new-arrivals" class="mobile-nav-link">NEW ARRIVALS</a>
+      <a href="#men" class="mobile-nav-link">MEN</a>
+      <a href="#women" class="mobile-nav-link">WOMEN</a>
+      <a href="#about" class="mobile-nav-link">ABOUT US</a>
+      <a href="#contact" class="mobile-nav-link">CONTACT</a>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="hero-bg-glow"></div>
+    <div class="hero-grid-pattern"></div>
+    
+    <div class="hero-container">
+      <!-- Left Column: Content -->
+      <div class="hero-content">
+        <div class="hero-tagline">OVERSIZED &bull; STREETWEAR &bull; CONFIDENCE</div>
+        <h1 class="hero-title">WEAR YOUR <img src="assets/aura_gold_text.png" alt="AURA" class="aura-gold-text"></h1>
+        <p class="hero-description">Premium quality. Trendy designs. Made to match your vibe. Explore our exclusive Gen-G collection crafted for ultimate comfort and expression.</p>
+        <div class="hero-ctas">
+          <a href="#new-arrivals" class="btn btn-primary">SHOP NOW</a>
+          <a href="#collection" class="btn btn-outline">EXPLORE COLLECTION</a>
+        </div>
+      </div>
+      
+      <!-- Right Column: Interactive 3D/2.5D Outfit Presentation -->
+      <div class="hero-visual-wrapper">
+        <div class="hero-visual" id="interactiveOutfit">
+          <!-- Transparent cutout outfits image -->
+          <div class="outfit-image-container">
+            <img src="assets/outfit_transparent_v3.png" alt="Aura Fashion Outfit Showcase" class="outfit-image" id="outfitImg">
+          </div>
+
+          <!-- Hotspots & Annotations SVG Overlay -->
+          <svg class="annotations-svg" id="annotationsSvg">
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d4af37" />
+              </marker>
+            </defs>
+            <path class="annot-path" id="path-coat" d="" marker-end="url(#arrow)" />
+            <path class="annot-path" id="path-sweater" d="" marker-end="url(#arrow)" />
+            <path class="annot-path" id="path-trousers" d="" marker-end="url(#arrow)" />
+            <path class="annot-path" id="path-sneakers" d="" marker-end="url(#arrow)" />
+          </svg>
+
+          <!-- Hotspots (Pulsing Dots) -->
+          <div class="hotspot" id="hotspot-coat" style="top: 26%; left: 32%;" data-product="coat">
+            <div class="hotspot-pulse"></div>
+            <div class="hotspot-dot"></div>
+          </div>
+          <div class="hotspot" id="hotspot-sweater" style="top: 33%; left: 58%;" data-product="sweater">
+            <div class="hotspot-pulse"></div>
+            <div class="hotspot-dot"></div>
+          </div>
+          <div class="hotspot" id="hotspot-trousers" style="top: 65%; left: 56%;" data-product="trousers">
+            <div class="hotspot-pulse"></div>
+            <div class="hotspot-dot"></div>
+          </div>
+          <div class="hotspot" id="hotspot-sneakers" style="top: 86%; left: 45%;" data-product="sneakers">
+            <div class="hotspot-pulse"></div>
+            <div class="hotspot-dot"></div>
+          </div>
+
+          <!-- Handwritten Labels -->
+          <div class="handwritten-label label-left" id="label-coat" style="top: 14%; left: 6%;">
+            <span class="arrow-text">OVERSIZED WOOL<br>BLEND COAT</span>
+          </div>
+          
+          <div class="handwritten-label label-right" id="label-sweater" style="top: 18%; left: 73%;">
+            <span class="arrow-text">CHUNKY KNIT<br>SWEATER</span>
+          </div>
+          
+          <div class="handwritten-label label-right" id="label-trousers" style="top: 55%; left: 75%;">
+            <span class="arrow-text">WIDE-LEG<br>TROUSERS</span>
+          </div>
+          
+          <div class="handwritten-label label-left" id="label-sneakers" style="top: 90%; left: 16%;">
+            <span class="arrow-text">LEATHER<br>SNEAKERS</span>
+          </div>
+
+          <!-- Quick view tooltip popup cards -->
+          <div class="hotspot-tooltip" id="tooltip-coat">
+            <h4>Oversized Wool Blend Coat</h4>
+            <p class="tooltip-price">₹4,999</p>
+            <button class="tooltip-add-btn" onclick="addToCartDirect('Oversized Wool Blend Coat', 4999, 'L', 'outfit_transparent_v3.png')">Quick Add</button>
+          </div>
+          <div class="hotspot-tooltip" id="tooltip-sweater">
+            <h4>Chunky Knit Sweater</h4>
+            <p class="tooltip-price">₹2,499</p>
+            <button class="tooltip-add-btn" onclick="addToCartDirect('Chunky Knit Sweater', 2499, 'M', 'outfit_transparent_v3.png')">Quick Add</button>
+          </div>
+          <div class="hotspot-tooltip" id="tooltip-trousers">
+            <h4>Wide-Leg Trousers</h4>
+            <p class="tooltip-price">₹1,099</p>
+            <button class="tooltip-add-btn" onclick="addToCartDirect('Wide-Leg Trousers', 1099, '32', 'outfit_transparent_v3.png')">Quick Add</button>
+          </div>
+          <div class="hotspot-tooltip" id="tooltip-sneakers">
+            <h4>Leather Sneakers</h4>
+            <p class="tooltip-price">₹1,499</p>
+            <button class="tooltip-add-btn" onclick="addToCartDirect('Leather Sneakers', 1499, 'UK 9', 'outfit_transparent_v3.png')">Quick Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Props Banner -->
+  <section class="value-props-section">
+    <div class="value-props-container">
+      <div class="prop-card">
+        <div class="prop-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 3 23 8 12 23 1 8 5 3"></polygon><line x1="1" y1="8" x2="23" y2="8"></line><line x1="12" y1="23" x2="5" y2="8"></line><line x1="12" y1="23" x2="19" y2="8"></line><line x1="5" y1="3" x2="12" y2="23"></line><line x1="19" y1="3" x2="12" y2="23"></line></svg>
+        </div>
+        <div class="prop-info">
+          <h3>PREMIUM QUALITY</h3>
+          <p>Finest fabrics & long lasting wear</p>
+        </div>
+      </div>
+      <div class="prop-card">
+        <div class="prop-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+        </div>
+        <div class="prop-info">
+          <h3>FAST DELIVERY</h3>
+          <p>Quick & reliable delivery all over India</p>
+        </div>
+      </div>
+      <div class="prop-card">
+        <div class="prop-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6a5 5 0 0 0-5-5 5 5 0 0 0-5 5v3h10V6z"></path><path d="M19 16a5 5 0 0 0-5-5H3v10h16v-5z"></path></svg>
+        </div>
+        <div class="prop-info">
+          <h3>TRENDING STYLES</h3>
+          <p>Stay ahead with the latest trends</p>
+        </div>
+      </div>
+      <div class="prop-card">
+        <div class="prop-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+        </div>
+        <div class="prop-info">
+          <h3>EASY RETURNS</h3>
+          <p>Hassle-free returns within 7 days</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Arrivals Section -->
+  <section class="new-arrivals-section" id="new-arrivals">
+    <div class="section-header">
+      <h2>NEW ARRIVALS</h2>
+      <div class="gold-line"></div>
+    </div>
+    
+    <div class="products-grid" id="productsGrid">
+      <!-- Product Card 1 -->
+      <div class="product-card" data-id="1" data-name="Aura Graphic Tee" data-price="799" data-img="aura_graphic_tee.png">
+        <div class="product-img-wrapper">
+          <img src="assets/aura_graphic_tee.png" alt="Aura Graphic Tee" class="product-img">
+          <button class="wishlist-btn" aria-label="Add to wishlist">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </button>
+          <div class="size-selector-overlay">
+            <p>Select Size</p>
+            <div class="size-options">
+              <button class="size-opt-btn">S</button>
+              <button class="size-opt-btn">M</button>
+              <button class="size-opt-btn">L</button>
+              <button class="size-opt-btn">XL</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Aura Graphic Tee</h3>
+          <div class="product-footer">
+            <span class="product-price">₹799</span>
+            <button class="add-to-cart-btn" aria-label="Add to cart">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 2 -->
+      <div class="product-card" data-id="2" data-name="Oversized Hoodie" data-price="1199" data-img="oversized_hoodie.png">
+        <div class="product-img-wrapper">
+          <img src="assets/oversized_hoodie.png" alt="Oversized Hoodie" class="product-img">
+          <button class="wishlist-btn" aria-label="Add to wishlist">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </button>
+          <div class="size-selector-overlay">
+            <p>Select Size</p>
+            <div class="size-options">
+              <button class="size-opt-btn">S</button>
+              <button class="size-opt-btn">M</button>
+              <button class="size-opt-btn">L</button>
+              <button class="size-opt-btn">XL</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Oversized Hoodie</h3>
+          <div class="product-footer">
+            <span class="product-price">₹1,199</span>
+            <button class="add-to-cart-btn" aria-label="Add to cart">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 3 -->
+      <div class="product-card" data-id="3" data-name="Flannel Shirt" data-price="899" data-img="flannel_shirt.png">
+        <div class="product-img-wrapper">
+          <img src="assets/flannel_shirt.png" alt="Flannel Shirt" class="product-img">
+          <button class="wishlist-btn" aria-label="Add to wishlist">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </button>
+          <div class="size-selector-overlay">
+            <p>Select Size</p>
+            <div class="size-options">
+              <button class="size-opt-btn">S</button>
+              <button class="size-opt-btn">M</button>
+              <button class="size-opt-btn">L</button>
+              <button class="size-opt-btn">XL</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Flannel Shirt</h3>
+          <div class="product-footer">
+            <span class="product-price">₹899</span>
+            <button class="add-to-cart-btn" aria-label="Add to cart">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 4 -->
+      <div class="product-card" data-id="4" data-name="Wide Leg Trousers" data-price="1099" data-img="wide_leg_trousers.png">
+        <div class="product-img-wrapper">
+          <img src="assets/wide_leg_trousers.png" alt="Wide Leg Trousers" class="product-img">
+          <button class="wishlist-btn" aria-label="Add to wishlist">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </button>
+          <div class="size-selector-overlay">
+            <p>Select Waist Size</p>
+            <div class="size-options">
+              <button class="size-opt-btn">30</button>
+              <button class="size-opt-btn">32</button>
+              <button class="size-opt-btn">34</button>
+              <button class="size-opt-btn">36</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Wide Leg Trousers</h3>
+          <div class="product-footer">
+            <span class="product-price">₹1,099</span>
+            <button class="add-to-cart-btn" aria-label="Add to cart">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 5 -->
+      <div class="product-card" data-id="5" data-name="Leather Sneakers" data-price="1499" data-img="leather_sneakers.png">
+        <div class="product-img-wrapper">
+          <img src="assets/leather_sneakers.png" alt="Leather Sneakers" class="product-img">
+          <button class="wishlist-btn" aria-label="Add to wishlist">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </button>
+          <div class="size-selector-overlay">
+            <p>Select Shoe Size</p>
+            <div class="size-options">
+              <button class="size-opt-btn">UK 8</button>
+              <button class="size-opt-btn">UK 9</button>
+              <button class="size-opt-btn">UK 10</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Leather Sneakers</h3>
+          <div class="product-footer">
+            <span class="product-price">₹1,499</span>
+            <button class="add-to-cart-btn" aria-label="Add to cart">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="view-all-wrapper">
+      <button class="btn btn-outline" id="viewAllProductsBtn">VIEW ALL PRODUCTS</button>
+    </div>
+  </section>
+
+  <!-- Curated Collection Section -->
+  <section class="curated-section" id="collection">
+    <div class="curated-container">
+      <!-- Left side text -->
+      <div class="curated-intro">
+        <span class="curated-tagline">CURATED COLLECTION</span>
+        <h2>EXPLORE OUR COLLECTIONS</h2>
+        <p>From everyday basics to statement pieces, we have something for every vibe. Explore comfortable oversized tees, durable streetwear, and premium outerwear designed to match your aura.</p>
+        <a href="#new-arrivals" class="btn btn-primary curated-shop-btn">SHOP COLLECTION</a>
+      </div>
+      
+      <!-- Right side banners -->
+      <div class="curated-grid">
+        <div class="collection-banner-card" id="banner-men">
+          <img src="assets/men_collection.png" alt="Men's Collection" class="banner-img">
+          <div class="banner-overlay"></div>
+          <div class="banner-content">
+            <h3>MEN</h3>
+            <a href="#new-arrivals" class="banner-link">VIEW ALL &rarr;</a>
+          </div>
+        </div>
+
+        <div class="collection-banner-card" id="banner-women">
+          <img src="assets/women_collection.png" alt="Women's Collection" class="banner-img">
+          <div class="banner-overlay"></div>
+          <div class="banner-content">
+            <h3>WOMEN</h3>
+            <a href="#new-arrivals" class="banner-link">VIEW ALL &rarr;</a>
+          </div>
+        </div>
+
+        <div class="collection-banner-card" id="banner-streetwear">
+          <img src="assets/streetwear_collection.png" alt="Streetwear Collection" class="banner-img">
+          <div class="banner-overlay"></div>
+          <div class="banner-content">
+            <h3>STREETWEAR</h3>
+            <a href="#new-arrivals" class="banner-link">VIEW ALL &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram Grid Section -->
+  <section class="instagram-section">
+    <div class="instagram-container">
+      <div class="insta-header">
+        <div class="insta-logo-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </div>
+        <h2>FOLLOW US ON INSTAGRAM</h2>
+        <a href="https://instagram.com/aura_fashion_09x" target="_blank" class="insta-handle">@aura_fashion_09x</a>
+      </div>
+      
+      <div class="insta-grid">
+        <div class="insta-post">
+          <img src="assets/insta_1.jpg" alt="Instagram Post 1" class="insta-img">
+          <div class="insta-post-overlay">
+            <span class="insta-post-likes">❤️ 214</span>
+          </div>
+        </div>
+        <div class="insta-post">
+          <img src="assets/insta_2.jpg" alt="Instagram Post 2" class="insta-img">
+          <div class="insta-post-overlay">
+            <span class="insta-post-likes">❤️ 188</span>
+          </div>
+        </div>
+        <div class="insta-post">
+          <img src="assets/insta_3.jpg" alt="Instagram Post 3" class="insta-img">
+          <div class="insta-post-overlay">
+            <span class="insta-post-likes">❤️ 245</span>
+          </div>
+        </div>
+        <div class="insta-post">
+          <img src="assets/insta_4.jpg" alt="Instagram Post 4" class="insta-img">
+          <div class="insta-post-overlay">
+            <span class="insta-post-likes">❤️ 192</span>
+          </div>
+        </div>
+        <div class="insta-post">
+          <img src="assets/insta_5.jpg" alt="Instagram Post 5" class="insta-img">
+          <div class="insta-post-overlay">
+            <span class="insta-post-likes">❤️ 208</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials & Visit Store Section -->
+  <section class="reviews-store-section">
+    <div class="reviews-store-container">
+      <!-- Left Column: Testimonials -->
+      <div class="testimonials-col">
+        <h2 class="section-sub-title">WHAT OUR <span class="gold-text">CUSTOMERS SAY</span></h2>
+        <p class="section-tagline">Real people. Real reviews.</p>
+        
+        <div class="testimonials-wrapper">
+          <div class="testimonials-carousel">
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Best collection in Aurangabad! Quality is top notch and staff is friendly."</p>
+              <p class="reviewer-name">- Rohit Kumar</p>
+            </div>
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Amazing oversized t-shirts and co-ord sets. Aura Fashion never disappoints."</p>
+              <p class="reviewer-name">- Aditya Raj</p>
+            </div>
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Affordable prices with premium quality. Try the co-ord sets now."</p>
+              <p class="reviewer-name">- Sameer Khan</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-dots">
+          <span class="dot active" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
+        </div>
+      </div>
+
+      <!-- Right Column: Visit Store -->
+      <div class="visit-store-col">
+        <div class="store-info-side">
+          <h2 class="section-sub-title">VISIT OUR <span class="gold-text">STORE</span></h2>
+          <p class="section-tagline">We'd love to see you in person.</p>
+          
+          <div class="store-details-list">
+            <div class="store-detail-item">
+              <div class="detail-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div class="detail-text">
+                <p>Tikri Road, Near Naaz Marriage Hall, Galaxy Market, Aurangabad, Bihar</p>
+              </div>
+            </div>
+            <div class="store-detail-item">
+              <div class="detail-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div class="detail-text">
+                <p>7870556762</p>
+                <p>9229990634</p>
+              </div>
+            </div>
+            <div class="store-detail-item">
+              <div class="detail-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div class="detail-text">
+                <p><strong>Open Everyday</strong></p>
+                <p>10:00 AM - 9:30 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="store-map-side">
+          <iframe 
+            src="https://maps.google.com/maps?q=Aura%20Fashion,%20Tikri%20Rd,%20Maharana%20Pratap%20Nagar,%20Aurangabad,%20Bihar%20824101&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Footer -->
+  <footer class="main-footer" id="contact">
+    <div class="footer-container">
+      <!-- Col 1: Brand Info -->
+      <div class="footer-brand-col">
+        <img src="assets/logo_transparent.png" alt="Aura Fashion Logo" class="footer-logo">
+        <p class="brand-tagline">We drop trends, not deadlines!</p>
+        <p class="brand-text">Aura Fashion is your ultimate destination for premium streetwear, oversized collection, and urban style statement pieces. Designed with confidence in India.</p>
+        <div class="footer-social-links">
+          <a href="https://instagram.com/aura_fashion_09x" target="_blank" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="https://wa.me/917870556762" target="_blank" aria-label="WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Col 2: Shop Menu -->
+      <div class="footer-links-col">
+        <h3>SHOP</h3>
+        <ul>
+          <li><a href="#new-arrivals">All Products</a></li>
+          <li><a href="#collection">Men's Wear</a></li>
+          <li><a href="#collection">Women's Wear</a></li>
+          <li><a href="#collection">Streetwear</a></li>
+          <li><a href="#new-arrivals">New Arrivals</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Customer Care -->
+      <div class="footer-links-col">
+        <h3>CUSTOMER CARE</h3>
+        <ul>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Returns & Refunds</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Address/Company -->
+      <div class="footer-links-col address-col">
+        <h3>CUSTOMER SERVICE</h3>
+        <p class="contact-detail">
+          <strong>Call / WhatsApp:</strong><br>
+          +91 7870556762<br>
+          +91 9229590634
+        </p>
+        <p class="contact-detail">
+          <strong>Visit Store:</strong><br>
+          Tikri road, Near Naaz Marriage hall,<br>
+          Galaxy market, Aurangabad (Bihar) 📍
+        </p>
+      </div>
+
+      <!-- Col 5: Newsletter -->
+      <div class="footer-newsletter-col">
+        <h3>NEWSLETTER</h3>
+        <p>Subscribe to get updates on new arrivals, collections, & special offers.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" placeholder="Enter your email" required id="newsletterEmail">
+          <button type="submit" class="btn btn-primary">SUBSCRIBE</button>
+        </form>
+        <div class="newsletter-success" id="newsletterSuccess">✓ Subscribed successfully!</div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 Aura Fashion. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Search Sliding Overlay -->
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-container">
+      <div class="search-bar">
+        <input type="text" placeholder="Search product (tee, hoodie, flannel, trousers, sneakers)..." id="searchInput">
+        <button class="search-close" id="searchClose">&times;</button>
+      </div>
+      <div class="search-results" id="searchResults">
+        <!-- Live search results rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Sliding Cart Drawer -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h3>YOUR BAG</h3>
+      <button class="cart-drawer-close" id="cartDrawerClose">&times;</button>
+    </div>
+    
+    <div class="cart-items-container" id="cartItemsContainer">
+      <!-- Dynamic cart items will render here -->
+      <div class="empty-cart-message">Your bag is empty.</div>
+    </div>
+    
+    <div class="cart-drawer-footer" id="cartDrawerFooter">
+      <div class="cart-subtotal-row">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">₹0</span>
+      </div>
+      <button class="btn btn-primary checkout-btn" id="checkoutBtn">PROCEED TO CHECKOUT</button>
+    </div>
+  </div>
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <!-- Account Modal -->
+  <div class="account-modal" id="accountModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-tabs">
+        <button class="modal-tab-btn active" data-tab="login">LOGIN</button>
+        <button class="modal-tab-btn" data-tab="signup">SIGN UP</button>
+      </div>
+      
+      <!-- Login Form -->
+      <form class="modal-form active" id="loginForm">
+        <div class="form-group">
+          <label for="loginEmail">Email address</label>
+          <input type="email" id="loginEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" required>
+        </div>
+        <button type="submit" class="btn btn-primary modal-submit">LOG IN</button>
+      </form>
+      
+      <!-- Signup Form -->
+      <form class="modal-form" id="signupForm">
+        <div class="form-group">
+          <label for="signupName">Full Name</label>
+          <input type="text" id="signupName" required>
+        </div>
+        <div class="form-group">
+          <label for="signupEmail">Email address</label>
+          <input type="email" id="signupEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="signupPassword">Password</label>
+          <input type="password" id="signupPassword" required>
+        </div>
+        <button type="submit" class="btn btn-primary modal-submit">CREATE ACCOUNT</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Checkout Success Modal -->
+  <div class="success-modal-overlay" id="successModal">
+    <div class="success-modal">
+      <div class="success-icon">✓</div>
+      <h2>ORDER PLACED SUCCESSFULLY!</h2>
+      <p>Thank you for shopping with Aura Fashion. Your order has been placed. We are preparing it to match your vibe!</p>
+      <button class="btn btn-primary" id="successModalClose">CONTINUE SHOPPING</button>
+    </div>
+  </div>
+
+  <!-- Floating Social Actions -->
+  <div class="floating-socials">
+    <!-- WhatsApp -->
+    <a href="https://wa.me/917870556762" target="_blank" class="float-btn float-whatsapp" aria-label="WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    </a>
+    <!-- Call -->
+    <a href="tel:+917870556762" class="float-btn float-call" aria-label="Call Us">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    </a>
+    <!-- Instagram -->
+    <a href="https://instagram.com/aura_fashion_09x" target="_blank" class="float-btn float-insta" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+    </a>
+    <!-- Scroll To Top -->
+    <button id="scrollToTopBtn" class="float-btn float-top" aria-label="Scroll to Top">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+    </button>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>
