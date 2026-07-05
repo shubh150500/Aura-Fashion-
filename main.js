@@ -2,11 +2,12 @@
 
 // Product Database
 const PRODUCTS = [
-  { id: 1, name: "Aura Graphic Tee", price: 799, img: "aura_graphic_tee.png" },
-  { id: 2, name: "Oversized Hoodie", price: 1199, img: "oversized_hoodie.png" },
-  { id: 3, name: "Flannel Shirt", price: 899, img: "flannel_shirt.png" },
-  { id: 4, name: "Wide Leg Trousers", price: 1099, img: "wide_leg_trousers.png" },
-  { id: 5, name: "Leather Sneakers", price: 1499, img: "leather_sneakers.png" }
+  { id: 1, name: "Aura Oversized Back Print Tee", price: 1499, img: "aura_graphic_tee.png" },
+  { id: 2, name: "Aura Essential Hoodie", price: 2199, img: "oversized_hoodie.png" },
+  { id: 3, name: "Aura Cargo Wide Pants", price: 1899, img: "wide_leg_trousers.png" },
+  { id: 4, name: "Aura Textured Shirt", price: 1799, img: "flannel_shirt.png" },
+  { id: 5, name: "Aura Bomber Jacket", price: 2999, img: "outfit_transparent_v3.png" },
+  { id: 6, name: "Aura Cap Black", price: 699, img: "aura_cap_black.png" }
 ];
 
 // Cart State
@@ -547,6 +548,21 @@ if (productsGridEl && scrollHintArrowEl) {
       scrollHintArrowEl.classList.add("hidden");
     } else {
       scrollHintArrowEl.classList.remove("hidden");
+    }
+  });
+}
+
+// --- 13. Circular Category Slider Arrow Scroll ---
+const categorySlider = document.getElementById("categorySlider");
+const categorySliderNext = document.getElementById("categorySliderNext");
+if (categorySlider && categorySliderNext) {
+  categorySliderNext.addEventListener("click", () => {
+    // Scroll slider by 200px or loop back to start if at the end
+    const maxScrollLeft = categorySlider.scrollWidth - categorySlider.clientWidth;
+    if (categorySlider.scrollLeft >= maxScrollLeft - 10) {
+      categorySlider.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      categorySlider.scrollBy({ left: 200, behavior: "smooth" });
     }
   });
 }
