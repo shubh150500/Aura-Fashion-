@@ -2,22 +2,26 @@
 
 /* CSS Variables */
 :root {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #121212;
-  --bg-tertiary: #1a1a1a;
+  --bg-primary: #121212; /* Matte Black */
+  --bg-secondary: #181818; /* Matte Black Lighter */
+  --bg-tertiary: #202020;
   --accent-gold: #d4af37;
   --accent-gold-hover: #f3cf5a;
   --accent-beige: #c5a880;
   --text-white: #ffffff;
   --text-gray: #a0a0a0;
   --text-dark: #333333;
-  --border-color: #222222;
+  --border-color: #262626;
   --font-sans: 'Bebas Neue', sans-serif;
   --font-body: 'Oswald', sans-serif;
   --font-brush: 'Permanent Marker', cursive;
   --font-handwritten: 'Architects Daughter', cursive;
   --header-height: 80px;
   --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  
+  /* Glossy Text Gradients */
+  --glossy-gold-grad: linear-gradient(135deg, #fff3d1 0%, #d4af37 40%, #f3cf5a 60%, #8c6b12 100%);
+  --glossy-silver-grad: linear-gradient(135deg, #ffffff 0%, #e0e0e0 40%, #ffffff 60%, #888888 100%);
 }
 
 /* Reset & Base Styles */
@@ -38,6 +42,46 @@ body {
   font-family: var(--font-body);
   overflow-x: hidden;
   line-height: 1.6;
+}
+
+/* --- Premium Glossy Text Effects --- */
+.hero-title, 
+.section-header h2, 
+.promo-banner-content h2, 
+.category-info h3, 
+.product-title, 
+.insta-header h2, 
+.footer-col h3,
+.value-props-section h3 {
+  background: var(--glossy-silver-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Gold Glossy Accent Text */
+.aura-gold-text, 
+.promo-label, 
+.category-arrow, 
+.product-price, 
+.promo-main, 
+.promo-sub, 
+.gold-line {
+  background: var(--glossy-gold-grad) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  text-shadow: 0 0 2px rgba(212, 175, 55, 0.3), 0 2px 5px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Re-fill color to make gold lines visual block rather than text clipped */
+.gold-line {
+  background: var(--glossy-gold-grad) !important;
+  -webkit-text-fill-color: initial !important;
+  color: initial !important;
 }
 
 a {
