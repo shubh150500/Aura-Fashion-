@@ -2,16 +2,16 @@
 
 /* CSS Variables */
 :root {
-  --bg-primary: #121212; /* Matte Black */
-  --bg-secondary: #181818; /* Matte Black Lighter */
-  --bg-tertiary: #202020;
+  --bg-primary: #000000; /* Pure Pitch Black */
+  --bg-secondary: #080808; /* Ultra Dark Gray */
+  --bg-tertiary: #101010;
   --accent-gold: #d4af37;
   --accent-gold-hover: #f3cf5a;
   --accent-beige: #c5a880;
   --text-white: #ffffff;
   --text-gray: #a0a0a0;
   --text-dark: #333333;
-  --border-color: #262626;
+  --border-color: #1a1a1a;
   --font-sans: 'Bebas Neue', sans-serif;
   --font-body: 'Oswald', sans-serif;
   --font-brush: 'Permanent Marker', cursive;
@@ -19,9 +19,9 @@
   --header-height: 80px;
   --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   
-  /* Glossy Text Gradients */
-  --glossy-gold-grad: linear-gradient(135deg, #fff3d1 0%, #d4af37 40%, #f3cf5a 60%, #8c6b12 100%);
-  --glossy-silver-grad: linear-gradient(135deg, #ffffff 0%, #e0e0e0 40%, #ffffff 60%, #888888 100%);
+  /* Glossy Text Gradients - Hyper Reflection */
+  --glossy-gold-grad: linear-gradient(to bottom, #fff8e7 0%, #ffd700 25%, #d4af37 50%, #fff8e7 75%, #b8860b 100%);
+  --glossy-silver-grad: linear-gradient(to bottom, #ffffff 0%, #f0f0f0 25%, #d3d3d3 50%, #ffffff 75%, #a9a9a9 100%);
 }
 
 /* Reset & Base Styles */
@@ -57,7 +57,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  text-shadow: 0 0 1px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.45), 0 0 2px rgba(255, 255, 255, 0.8), 0 3px 6px rgba(0, 0, 0, 0.9);
   font-weight: 600;
   letter-spacing: 1px;
 }
@@ -74,7 +74,7 @@ body {
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: transparent !important;
-  text-shadow: 0 0 2px rgba(212, 175, 55, 0.3), 0 2px 5px rgba(0, 0, 0, 0.7) !important;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.55), 0 0 3px rgba(255, 215, 0, 0.9), 0 3px 6px rgba(0, 0, 0, 0.9) !important;
 }
 
 /* Re-fill color to make gold lines visual block rather than text clipped */
