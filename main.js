@@ -566,3 +566,103 @@ if (categorySlider && categorySliderNext) {
     }
   });
 }
+
+// --- 14. HTML5 Canvas 3D Video Scrollytelling Controls ---
+const scrollyContainer = document.getElementById("scrollytelling");
+const scrollyCanvas = document.getElementById("scrollyCanvas");
+
+if (scrollyContainer && scrollyCanvas) {
+  const ctx = scrollyCanvas.getContext("2d");
+  
+  // Create offscreen video element
+  const video = document.createElement("video");
+  video.src = "assets/3d.mp4";
+  video.preload = "auto";
+  video.muted = true;
+  video.playsInline = true;
+  video.loop = false;
+  video.load();
+
+  // Selected Text Blocks
+  const text1 = document.getElementById("scrolly-text-1");
+  const text2 = document.getElementById("scrolly-text-2");
+  const text3 = document.getElementById("scrolly-text-3");
+
+  // Adjust canvas size to window dimensions
+  function resizeCanvas() {
+    scrollyCanvas.width = window.innerWidth;
+    scrollyCanvas.height = window.innerHeight;
+    drawVideoToCanvas();
+  }
+
+  function drawVideoToCanvas() {
+    if (!video.videoWidth) return;
+
+    const canvasWidth = scrollyCanvas.width;
+    const canvasHeight = scrollyCanvas.height;
+    const videoWidth = video.videoWidth;
+    const videoHeight = video.videoHeight;
+
+    const videoAspect = videoWidth / videoHeight;
+    const canvasAspect = canvasWidth / canvasHeight;
+
+    let renderWidth, renderHeight, xOffset, yOffset;
+
+    // Canvas object-fit: cover equivalent calculation
+    if (canvasAspect > videoAspect) {
+      renderWidth = canvasWidth;
+      renderHeight = canvasWidth / videoAspect;
+      xOffset = 0;
+      yOffset = (canvasHeight - renderHeight) / 2;
+    } else {
+      renderWidth = canvasHeight * videoAspect;
+      renderHeight = canvasHeight;
+      xOffset = (canvasWidth - renderWidth) / 2;
+      yOffset = 0;
+    }
+
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    ctx.drawImage(video, xOffset, yOffset, renderWidth, renderHeight);
+  }
+
+  // Draw frame on seek completion
+  video.addEventListener("seeked", drawVideoToCanvas);
+
+  // Initial draw once video metadata is ready
+  video.addEventListener("loadedmetadata", () => {
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+  });
+
+  // Track window scroll
+  window.addEventListener("scroll", () => {
+    const rect = scrollyContainer.getBoundingClientRect();
+    const containerTop = scrollyContainer.offsetTop;
+    const containerHeight = scrollyContainer.offsetHeight;
+    const scrollY = window.scrollY;
+
+    // Calculate scroll percentage within the container
+    let scrollPercent = (scrollY - containerTop) / (containerHeight - window.innerHeight);
+    scrollPercent = Math.max(0, Math.min(1, scrollPercent));
+
+    if (video.duration) {
+      // Seek video playback time based on scroll progress
+      video.currentTime = scrollPercent * video.duration;
+    }
+
+    // Toggle active classes on text blocks based on scroll ranges
+    if (scrollPercent < 0.3) {
+      text1.classList.add("active");
+      text2.classList.remove("active");
+      text3.classList.remove("active");
+    } else if (scrollPercent >= 0.3 && scrollPercent < 0.65) {
+      text1.classList.remove("active");
+      text2.classList.add("active");
+      text3.classList.remove("active");
+    } else {
+      text1.classList.remove("active");
+      text2.classList.remove("active");
+      text3.classList.add("active");
+    }
+  });
+}
