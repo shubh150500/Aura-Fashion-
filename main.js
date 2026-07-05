@@ -574,13 +574,22 @@ const scrollyCanvas = document.getElementById("scrollyCanvas");
 if (scrollyContainer && scrollyCanvas) {
   const ctx = scrollyCanvas.getContext("2d");
   
-  // Create offscreen video element
+  // Create video element and append to DOM to force browser decoding
   const video = document.createElement("video");
-  video.src = "assets/3d.mp4";
+  video.src = "./assets/3d.mp4";
   video.preload = "auto";
   video.muted = true;
   video.playsInline = true;
   video.loop = false;
+  
+  // Hide video visually but keep in DOM
+  video.style.position = "absolute";
+  video.style.width = "1px";
+  video.style.height = "1px";
+  video.style.opacity = "0";
+  video.style.pointerEvents = "none";
+  scrollyContainer.appendChild(video);
+  
   video.load();
 
   // Selected Text Blocks
@@ -628,11 +637,15 @@ if (scrollyContainer && scrollyCanvas) {
   // Draw frame on seek completion
   video.addEventListener("seeked", drawVideoToCanvas);
 
-  // Initial draw once video metadata is ready
+  // Trigger draw on various loading milestones
   video.addEventListener("loadedmetadata", () => {
     resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+    video.currentTime = 0.001; // Force-render first frame
   });
+  video.addEventListener("loadeddata", resizeCanvas);
+  video.addEventListener("canplay", resizeCanvas);
+  
+  window.addEventListener("resize", resizeCanvas);
 
   // Track window scroll
   window.addEventListener("scroll", () => {
