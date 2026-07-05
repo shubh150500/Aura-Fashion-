@@ -1889,6 +1889,59 @@ input {
   width: 100%;
 }
 
+.products-grid-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.scroll-hint-arrow {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(4px);
+  border: 1.5px solid var(--accent-gold);
+  color: var(--accent-gold);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+  animation: pulse-arrow 1.6s infinite;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.scroll-hint-arrow.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes pulse-arrow {
+  0% {
+    transform: translateY(-50%) translateX(0);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+  }
+  50% {
+    transform: translateY(-50%) translateX(6px);
+    box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+  }
+  100% {
+    transform: translateY(-50%) translateX(0);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+  }
+}
+
+@media (max-width: 992px) {
+  .scroll-hint-arrow {
+    display: flex;
+  }
+}
+
 /* Floating Social Actions */
 .floating-socials {
   position: fixed;
@@ -2170,6 +2223,18 @@ input {
   .collection-banner-card {
     aspect-ratio: 1 / 1.4 !important;
   }
+  .banner-content {
+    bottom: 10px !important;
+    left: 10px !important;
+    right: 10px !important;
+  }
+  .banner-content h3 {
+    font-size: 0.85rem !important;
+    margin-bottom: 2px !important;
+  }
+  .banner-link {
+    font-size: 0.6rem !important;
+  }
   .footer-container {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 25px !important;
@@ -2270,6 +2335,19 @@ input {
   }
   .search-bar input {
     font-size: 1.1rem;
+  }
+  .banner-content {
+    bottom: 8px !important;
+    left: 5px !important;
+    right: 5px !important;
+    text-align: center !important;
+  }
+  .banner-content h3 {
+    font-size: 0.72rem !important;
+    margin-bottom: 0px !important;
+  }
+  .banner-link {
+    font-size: 0.55rem !important;
   }
 }
 

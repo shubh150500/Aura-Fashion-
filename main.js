@@ -537,3 +537,16 @@ if (scrollToTopBtn) {
     });
   });
 }
+
+// --- 12. Products Grid Horizontal Scroll Hint Hide ---
+const productsGridEl = document.getElementById("productsGrid");
+const scrollHintArrowEl = document.getElementById("scrollHintArrow");
+if (productsGridEl && scrollHintArrowEl) {
+  productsGridEl.addEventListener("scroll", () => {
+    if (productsGridEl.scrollLeft > 25) {
+      scrollHintArrowEl.classList.add("hidden");
+    } else {
+      scrollHintArrowEl.classList.remove("hidden");
+    }
+  });
+}
