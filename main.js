@@ -567,112 +567,99 @@ if (categorySlider && categorySliderNext) {
   });
 }
 
-// --- 14. HTML5 Canvas 3D Video Scrollytelling Controls ---
+// --- 14. HTML5 Canvas 3D WebP Sequence Scrollytelling ---
 const scrollyContainer = document.getElementById("scrollytelling");
 const scrollyCanvas = document.getElementById("scrollyCanvas");
 
 if (scrollyContainer && scrollyCanvas) {
   const ctx = scrollyCanvas.getContext("2d");
   
-  // Create video element and append to DOM to force browser decoding
-  const video = document.createElement("video");
-  video.src = "assets/3d.mp4";
-  video.preload = "auto";
-  video.muted = true;
-  video.playsInline = true;
-  video.loop = false;
+  const totalFrames = 240;
+  const currentFrame = index => `assets/sequence/frame_${index.toString().padStart(3, '0')}.webp`;
   
-  // Hide video visually but keep in DOM
-  video.style.position = "absolute";
-  video.style.width = "1px";
-  video.style.height = "1px";
-  video.style.opacity = "0";
-  video.style.pointerEvents = "none";
-  scrollyContainer.appendChild(video);
-  
-  video.load();
+  // Preload all 240 frames in memory for zero-lag scrubbing
+  const images = [];
+  let loadedCount = 0;
+  let activeFrameIndex = 1;
 
   // Selected Text Blocks
   const text1 = document.getElementById("scrolly-text-1");
   const text2 = document.getElementById("scrolly-text-2");
   const text3 = document.getElementById("scrolly-text-3");
 
-  // Adjust canvas size to window dimensions
-  function resizeCanvas() {
-    scrollyCanvas.width = window.innerWidth;
-    scrollyCanvas.height = window.innerHeight;
-    drawVideoToCanvas();
+  function preloadImages() {
+    for (let i = 1; i <= totalFrames; i++) {
+      const img = new Image();
+      img.src = currentFrame(i);
+      img.onload = () => {
+        loadedCount++;
+        // Draw the first frame once it's loaded
+        if (loadedCount === 1 || i === 1) {
+          resizeCanvas();
+        }
+      };
+      images.push(img);
+    }
   }
 
-  function drawVideoToCanvas() {
-    if (!video.videoWidth) return;
+  // Draw specific frame onto canvas with object-fit: cover sizing
+  function drawFrame(index) {
+    const img = images[index - 1];
+    if (!img || !img.complete) return;
 
     const canvasWidth = scrollyCanvas.width;
     const canvasHeight = scrollyCanvas.height;
-    const videoWidth = video.videoWidth;
-    const videoHeight = video.videoHeight;
+    const imgWidth = img.width;
+    const imgHeight = img.height;
 
-    const videoAspect = videoWidth / videoHeight;
+    const imgAspect = imgWidth / imgHeight;
     const canvasAspect = canvasWidth / canvasHeight;
 
     let renderWidth, renderHeight, xOffset, yOffset;
 
-    // Canvas object-fit: cover equivalent calculation
-    if (canvasAspect > videoAspect) {
+    if (canvasAspect > imgAspect) {
       renderWidth = canvasWidth;
-      renderHeight = canvasWidth / videoAspect;
+      renderHeight = canvasWidth / imgAspect;
       xOffset = 0;
       yOffset = (canvasHeight - renderHeight) / 2;
     } else {
-      renderWidth = canvasHeight * videoAspect;
+      renderWidth = canvasHeight * imgAspect;
       renderHeight = canvasHeight;
       xOffset = (canvasWidth - renderWidth) / 2;
       yOffset = 0;
     }
 
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-    ctx.drawImage(video, xOffset, yOffset, renderWidth, renderHeight);
+    ctx.drawImage(img, xOffset, yOffset, renderWidth, renderHeight);
+    activeFrameIndex = index;
   }
 
-  // Draw frame on seek completion
-  video.addEventListener("seeked", drawVideoToCanvas);
-
-  // Trigger draw on various loading milestones (preventing race condition if cached)
-  if (video.readyState >= 1) {
-    resizeCanvas();
-    video.currentTime = 0.001; // Force-render first frame
-  } else {
-    video.addEventListener("loadedmetadata", () => {
-      resizeCanvas();
-      video.currentTime = 0.001;
-    });
+  function resizeCanvas() {
+    scrollyCanvas.width = window.innerWidth;
+    scrollyCanvas.height = window.innerHeight;
+    drawFrame(activeFrameIndex);
   }
 
-  if (video.readyState >= 2) {
-    resizeCanvas();
-  } else {
-    video.addEventListener("loadeddata", resizeCanvas);
-    video.addEventListener("canplay", resizeCanvas);
-  }
-  
+  // Preload all assets
+  preloadImages();
+
   window.addEventListener("resize", resizeCanvas);
 
-  // Track window scroll
+  // Track window scroll to scrub frames
   window.addEventListener("scroll", () => {
-    const rect = scrollyContainer.getBoundingClientRect();
     const containerTop = scrollyContainer.offsetTop;
     const containerHeight = scrollyContainer.offsetHeight;
     const scrollY = window.scrollY;
 
-    // Calculate scroll percentage within the container
+    // Calculate scroll percentage
     let scrollPercent = (scrollY - containerTop) / (containerHeight - window.innerHeight);
     scrollPercent = Math.max(0, Math.min(1, scrollPercent));
 
-    if (video.duration) {
-      // Seek video playback time based on scroll progress
-      video.currentTime = scrollPercent * video.duration;
-      drawVideoToCanvas(); // Render immediately for real-time responsiveness
-    }
+    // Map percentage to frame index
+    const frameIndex = Math.max(1, Math.min(totalFrames, Math.floor(scrollPercent * (totalFrames - 1)) + 1));
+    
+    // Draw the mapped frame
+    drawFrame(frameIndex);
 
     // Toggle active classes on text blocks based on scroll ranges
     if (scrollPercent < 0.3) {
