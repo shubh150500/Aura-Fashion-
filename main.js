@@ -593,10 +593,11 @@ if (scrollyContainer && scrollyCanvas) {
       img.src = currentFrame(i);
       img.onload = () => {
         loadedCount++;
-        // Draw the first frame once it's loaded
-        if (loadedCount === 1 || i === 1) {
-          resizeCanvas();
-        }
+        // Keep updating canvas with progress bar or render frame
+        resizeCanvas();
+      };
+      img.onerror = () => {
+        console.error("Failed to load 3D frame " + i + " at: " + img.src);
       };
       images.push(img);
     }
@@ -604,11 +605,33 @@ if (scrollyContainer && scrollyCanvas) {
 
   // Draw specific frame onto canvas with object-fit: cover sizing
   function drawFrame(index) {
-    const img = images[index - 1];
-    if (!img || !img.complete) return;
-
     const canvasWidth = scrollyCanvas.width;
     const canvasHeight = scrollyCanvas.height;
+    const img = images[index - 1];
+
+    if (!img || !img.complete) {
+      // Clear screen
+      ctx.fillStyle = "#000000";
+      ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+      
+      // Draw luxury AURA gold text and loading status
+      ctx.fillStyle = "#d4af37";
+      ctx.font = "bold 20px 'Bebas Neue', sans-serif";
+      ctx.textAlign = "center";
+      ctx.letterSpacing = "2px";
+      ctx.fillText("LOADING 3D WORLD...", canvasWidth / 2, canvasHeight / 2 - 10);
+      
+      // Draw visual loading bar
+      const barWidth = 160;
+      const barHeight = 2;
+      const progress = loadedCount / totalFrames;
+      ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
+      ctx.fillRect(canvasWidth / 2 - barWidth / 2, canvasHeight / 2 + 15, barWidth, barHeight);
+      
+      ctx.fillStyle = "#d4af37";
+      ctx.fillRect(canvasWidth / 2 - barWidth / 2, canvasHeight / 2 + 15, barWidth * progress, barHeight);
+      return;
+    }
     const imgWidth = img.width;
     const imgHeight = img.height;
 
